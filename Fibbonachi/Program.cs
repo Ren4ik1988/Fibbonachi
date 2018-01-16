@@ -143,7 +143,7 @@ namespace Fibbonachi
 
             sum = tempFirst + tempSecond;
             CorrectionIndex = (sum - sum % PowNum) / PowNum;
-            partsOfSum.Add((sum % PowNum).ToString());
+            partsOfSum.Add(((sum % PowNum)+CorrectionIndex).ToString());
 
             firstNumberString = firstNumberString.Substring(firstNumberString.Length - 1, 18);
             secondNumberString = secondNumberString.Substring(secondNumberString.Length - 1, 18);
@@ -153,8 +153,12 @@ namespace Fibbonachi
 
         private void doResultFromList()
         {
+            bool first = true;
             nextNumberString = String.Empty;
-            
+            foreach (string c in PartsOfSum)
+            {
+                
+            }
         }
     }
 }
