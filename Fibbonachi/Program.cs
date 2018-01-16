@@ -22,7 +22,7 @@ namespace Fibbonachi
     {
         private static readonly ulong PowNum = (ulong)Math.Pow(10, 18);
         
-        List<string> partsOfSum = new List<string>();
+        private List<string> partsOfSum = new List<string>();
         private string testString, nextNumberString, firstNumberString, secondNumberString;
         private ulong testInt;
         private ulong firstNumber;
@@ -143,6 +143,17 @@ namespace Fibbonachi
 
             sum = tempFirst + tempSecond;
             CorrectionIndex = (sum - sum % PowNum) / PowNum;
+            partsOfSum.Add((sum % PowNum).ToString());
+
+            firstNumberString = firstNumberString.Substring(firstNumberString.Length - 1, 18);
+            secondNumberString = secondNumberString.Substring(secondNumberString.Length - 1, 18);
+            
+            FindNextNumberString();
+        }
+
+        private void doResultFromList()
+        {
+            nextNumberString = String.Empty;
             
         }
     }
