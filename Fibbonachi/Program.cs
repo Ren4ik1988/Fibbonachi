@@ -88,6 +88,8 @@ namespace Fibbonachi
                     break;
                 FindNextNumberString();
                 doResultFromList();
+                firstNumberString = secondNumberString;
+                secondNumberString = nextNumberString;
                 ResultIndex++;
             }
         }
@@ -113,38 +115,44 @@ namespace Fibbonachi
 
         private  void FindNextNumberString()
         {
-            ulong CorrectionIndex = 0;
+            ulong correctionIndex = 0;
             ulong tempFirst, tempSecond, sum;
+            string tempFirstString, tempSecondString;
 
-            if (firstNumberString == null)
+            tempFirstString = firstNumberString;
+            tempSecondString = secondNumberString;
+
+            if (tempFirstString == null)
                 tempFirst = 0;
-            else if (firstNumberString.Length > 18)
-                tempFirst = ulong.Parse(firstNumberString.Substring(firstNumberString.Length - 18, 18));
+            else if (tempFirstString.Length > 18)
+                tempFirst = ulong.Parse(tempFirstString.Substring(tempFirstString.Length - 18, 18));
             else
             {
-                tempFirst = ulong.Parse(firstNumberString);
-                firstNumberString = null;
+                tempFirst = ulong.Parse(tempFirstString);
+                tempFirstString = null;
             }
             
-            if (secondNumberString == null)
+            if (tempSecondString == null)
                 tempSecond = 0;
-            else if (secondNumberString.Length > 18)
-                tempSecond = ulong.Parse(secondNumberString.Substring(secondNumberString.Length - 18, 18));
+            else if (tempSecondString.Length > 18)
+                tempSecond = ulong.Parse(tempSecondString.Substring(tempSecondString.Length - 18, 18));
             else
             {
-                tempSecond = ulong.Parse(secondNumberString);
-                secondNumberString = null;
+                tempSecond = ulong.Parse(tempSecondString);
+                tempSecondString = null;
             }
 
             if (tempFirst == 0 && tempSecond == 0)
                 return;
 
             sum = tempFirst + tempSecond;
-            CorrectionIndex = (sum - sum % PowNum) / PowNum;
-            partsOfSum.Add(((sum % PowNum)+CorrectionIndex).ToString());
+            correctionIndex = (sum - sum % PowNum) / PowNum;
+            partsOfSum.Add(((sum % PowNum)+correctionIndex).ToString());
 
-            firstNumberString = firstNumberString.Substring(0, firstNumberString.Length - 18);
-            secondNumberString = secondNumberString.Substring(0, secondNumberString.Length - 18);
+            if(tempFirstString != null) 
+                tempFirstString = tempFirstString.Substring(0, tempFirstString.Length - 18);
+            if(tempSecondString != null)
+                tempSecondString = secondNumberString.Substring(0, secondNumberString.Length - 18);
             
             FindNextNumberString();
         }
