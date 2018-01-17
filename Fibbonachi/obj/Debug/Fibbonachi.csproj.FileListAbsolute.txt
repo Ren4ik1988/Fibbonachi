@@ -3,3 +3,9 @@ C:\Users\User\RiderProjects\Fibbonachi\Fibbonachi\bin\Debug\Fibbonachi.exe
 C:\Users\User\RiderProjects\Fibbonachi\Fibbonachi\bin\Debug\Fibbonachi.pdb
 C:\Users\User\RiderProjects\Fibbonachi\Fibbonachi\obj\Debug\Fibbonachi.exe
 C:\Users\User\RiderProjects\Fibbonachi\Fibbonachi\obj\Debug\Fibbonachi.pdb
+E:\Projects Git\Fibbonachi\Fibbonachi\bin\Debug\Fibbonachi.exe
+E:\Projects Git\Fibbonachi\Fibbonachi\bin\Debug\Fibbonachi.pdb
+E:\Projects Git\Fibbonachi\Fibbonachi\obj\Debug\Fibbonachi.csprojResolveAssemblyReference.cache
+E:\Projects Git\Fibbonachi\Fibbonachi\obj\Debug\Fibbonachi.csproj.CoreCompileInputs.cache
+E:\Projects Git\Fibbonachi\Fibbonachi\obj\Debug\Fibbonachi.exe
+E:\Projects Git\Fibbonachi\Fibbonachi\obj\Debug\Fibbonachi.pdb

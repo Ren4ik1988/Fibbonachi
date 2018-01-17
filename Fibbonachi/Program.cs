@@ -87,6 +87,7 @@ namespace Fibbonachi
                 if (nextNumberString == testString)
                     break;
                 FindNextNumberString();
+                doResultFromList();
                 ResultIndex++;
             }
         }
@@ -118,7 +119,7 @@ namespace Fibbonachi
             if (firstNumberString == null)
                 tempFirst = 0;
             else if (firstNumberString.Length > 18)
-                tempFirst = ulong.Parse(firstNumberString.Substring(firstNumberString.Length - 1, 18));
+                tempFirst = ulong.Parse(firstNumberString.Substring(firstNumberString.Length - 18, 18));
             else
             {
                 tempFirst = ulong.Parse(firstNumberString);
@@ -128,7 +129,7 @@ namespace Fibbonachi
             if (secondNumberString == null)
                 tempSecond = 0;
             else if (secondNumberString.Length > 18)
-                tempSecond = ulong.Parse(secondNumberString.Substring(secondNumberString.Length - 1, 18));
+                tempSecond = ulong.Parse(secondNumberString.Substring(secondNumberString.Length - 18, 18));
             else
             {
                 tempSecond = ulong.Parse(secondNumberString);
@@ -136,29 +137,39 @@ namespace Fibbonachi
             }
 
             if (tempFirst == 0 && tempSecond == 0)
-            {
-                doResultFromList();
                 return;
-            }
 
             sum = tempFirst + tempSecond;
             CorrectionIndex = (sum - sum % PowNum) / PowNum;
             partsOfSum.Add(((sum % PowNum)+CorrectionIndex).ToString());
 
-            firstNumberString = firstNumberString.Substring(firstNumberString.Length - 1, 18);
-            secondNumberString = secondNumberString.Substring(secondNumberString.Length - 1, 18);
+            firstNumberString = firstNumberString.Substring(0, firstNumberString.Length - 18);
+            secondNumberString = secondNumberString.Substring(0, secondNumberString.Length - 18);
             
             FindNextNumberString();
         }
 
         private void doResultFromList()
         {
-            bool first = true;
             nextNumberString = String.Empty;
-            foreach (string c in PartsOfSum)
+            partsOfSum.Reverse();
+            for (int i = 0; i < partsOfSum.Count-1; i++)
             {
-                
+                if(i != 1 && partsOfSum[i].Length < 18)
+                   partsOfSum[i] = addZero(partsOfSum[i]);
+
+                nextNumberString += partsOfSum[i];
             }
+        }
+
+        private string addZero(string v)
+        {
+            int targetAdd = 18 - v.Length;
+            for (int i = 0; i <targetAdd; i++)
+            {
+                v = v.Insert(0, "0");
+            }
+            return v;
         }
     }
 }
