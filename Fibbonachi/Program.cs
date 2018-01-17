@@ -81,6 +81,7 @@ namespace Fibbonachi
             nextNumberString = nextNumber.ToString();
             firstNumberString = firstNumber.ToString();
             secondNumberString = secondNumber.ToString();
+            ResultIndex++;
 
             while (true)
             {
@@ -117,42 +118,54 @@ namespace Fibbonachi
         {
             ulong correctionIndex = 0;
             ulong tempFirst, tempSecond, sum;
-            string tempFirstString, tempSecondString;
+            string tempFirstString = firstNumberString;
+            string tempSecondString = secondNumberString;
 
-            tempFirstString = firstNumberString;
-            tempSecondString = secondNumberString;
 
             do
             {
+                Console.WriteLine("{0} {1}", tempFirstString, tempSecondString);
                 if (tempFirstString == null)
                     tempFirst = 0;
                 else if (tempFirstString.Length > 18)
+                {
                     tempFirst = ulong.Parse(tempFirstString.Substring(tempFirstString.Length - 18, 18));
+                    Console.Write(tempFirst);
+                }
+
                 else
                 {
                     tempFirst = ulong.Parse(tempFirstString);
+                    Console.WriteLine(tempFirst);
                     tempFirstString = null;
                 }
 
                 if (tempSecondString == null)
                     tempSecond = 0;
                 else if (tempSecondString.Length > 18)
+                {
                     tempSecond = ulong.Parse(tempSecondString.Substring(tempSecondString.Length - 18, 18));
+                    Console.WriteLine(tempSecond);
+                }
+
                 else
                 {
+                    Console.WriteLine(tempSecondString);
                     tempSecond = ulong.Parse(tempSecondString);
                     tempSecondString = null;
-
-                    sum = tempFirst + tempSecond;
-                    correctionIndex = (sum - sum % PowNum) / PowNum;
-                    partsOfSum.Add(((sum % PowNum) + correctionIndex).ToString());
-
-                    if (tempFirstString != null)
-                        tempFirstString = tempFirstString.Substring(0, tempFirstString.Length - 18);
-                    if (tempSecondString != null)
-                        tempSecondString = secondNumberString.Substring(0, secondNumberString.Length - 18);
                 }
-            } while (tempFirst == 0 && tempSecond == 0);
+
+                sum = tempFirst + tempSecond;
+                partsOfSum.Add(((sum % PowNum) + correctionIndex).ToString());
+                correctionIndex = (sum - sum % PowNum) / PowNum;
+
+                if (tempFirstString != null)
+                    tempFirstString = tempFirstString.Substring(0, tempFirstString.Length - 18);
+                if (tempSecondString != null)
+                    tempSecondString = secondNumberString.Substring(0, secondNumberString.Length - 18);
+                
+            } 
+            while (tempFirst != 0 && tempSecond != 0);
         }
 
 
@@ -160,7 +173,7 @@ namespace Fibbonachi
         {
             nextNumberString = String.Empty;
             partsOfSum.Reverse();
-            for (int i = 0; i < partsOfSum.Count-1; i++)
+            for (int i = 1; i < partsOfSum.Count; i++)
             {
                 if(i != 1 && partsOfSum[i].Length < 18)
                    partsOfSum[i] = addZero(partsOfSum[i]);
