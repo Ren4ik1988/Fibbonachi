@@ -81,7 +81,7 @@ namespace Fibbonachi
             nextNumberString = nextNumber.ToString();
             firstNumberString = firstNumber.ToString();
             secondNumberString = secondNumber.ToString();
-            ResultIndex++;
+            Console.WriteLine(ResultIndex++);
 
             while (true)
             {
@@ -91,7 +91,9 @@ namespace Fibbonachi
                 doResultFromList();
                 firstNumberString = secondNumberString;
                 secondNumberString = nextNumberString;
-                ResultIndex++;
+                Console.WriteLine(ResultIndex++);
+                if (ResultIndex == 174)
+                    Console.ReadKey();
             }
         }
 
@@ -120,23 +122,21 @@ namespace Fibbonachi
             ulong tempFirst, tempSecond, sum;
             string tempFirstString = firstNumberString;
             string tempSecondString = secondNumberString;
-
+            
+            partsOfSum.Clear();
 
             do
             {
-                Console.WriteLine("{0} {1}", tempFirstString, tempSecondString);
                 if (tempFirstString == null)
                     tempFirst = 0;
                 else if (tempFirstString.Length > 18)
                 {
                     tempFirst = ulong.Parse(tempFirstString.Substring(tempFirstString.Length - 18, 18));
-                    Console.Write(tempFirst);
                 }
 
                 else
                 {
                     tempFirst = ulong.Parse(tempFirstString);
-                    Console.WriteLine(tempFirst);
                     tempFirstString = null;
                 }
 
@@ -145,12 +145,10 @@ namespace Fibbonachi
                 else if (tempSecondString.Length > 18)
                 {
                     tempSecond = ulong.Parse(tempSecondString.Substring(tempSecondString.Length - 18, 18));
-                    Console.WriteLine(tempSecond);
                 }
 
                 else
                 {
-                    Console.WriteLine(tempSecondString);
                     tempSecond = ulong.Parse(tempSecondString);
                     tempSecondString = null;
                 }
@@ -173,9 +171,14 @@ namespace Fibbonachi
         {
             nextNumberString = String.Empty;
             partsOfSum.Reverse();
-            for (int i = 1; i < partsOfSum.Count; i++)
+            if(partsOfSum[0] == "0")
             {
-                if(i != 1 && partsOfSum[i].Length < 18)
+                partsOfSum.Remove("0");
+            }
+
+            for (int i = 0; i < partsOfSum.Count; i++)
+            {
+                if(i != 0 && partsOfSum[i].Length < 18)
                    partsOfSum[i] = addZero(partsOfSum[i]);
 
                 nextNumberString += partsOfSum[i];
