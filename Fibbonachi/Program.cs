@@ -70,6 +70,8 @@ namespace Fibbonachi
 
         private void startCheckWithMod()
         {
+            ResultIndex = 1;
+            
             while (nextNumber < PowNum)
             {
                 nextNumber = firstNumber + secondNumber;
@@ -81,7 +83,6 @@ namespace Fibbonachi
             nextNumberString = nextNumber.ToString();
             firstNumberString = firstNumber.ToString();
             secondNumberString = secondNumber.ToString();
-            ResultIndex++;
 
             while (true)
             {
