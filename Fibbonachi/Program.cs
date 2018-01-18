@@ -81,7 +81,7 @@ namespace Fibbonachi
             nextNumberString = nextNumber.ToString();
             firstNumberString = firstNumber.ToString();
             secondNumberString = secondNumber.ToString();
-            Console.WriteLine(ResultIndex++);
+            ResultIndex++;
 
             while (true)
             {
@@ -91,9 +91,7 @@ namespace Fibbonachi
                 doResultFromList();
                 firstNumberString = secondNumberString;
                 secondNumberString = nextNumberString;
-                Console.WriteLine(ResultIndex++);
-                if (ResultIndex == 174)
-                    Console.ReadKey();
+                ResultIndex++;
             }
         }
 
@@ -160,7 +158,7 @@ namespace Fibbonachi
                 if (tempFirstString != null)
                     tempFirstString = tempFirstString.Substring(0, tempFirstString.Length - 18);
                 if (tempSecondString != null)
-                    tempSecondString = secondNumberString.Substring(0, secondNumberString.Length - 18);
+                    tempSecondString = tempSecondString.Substring(0, secondNumberString.Length - 18);
                 
             } 
             while (tempFirst != 0 && tempSecond != 0);
