@@ -158,7 +158,7 @@ namespace Fibbonachi
                 if (tempFirstString != null)
                     tempFirstString = tempFirstString.Substring(0, tempFirstString.Length - 18);
                 if (tempSecondString != null)
-                    tempSecondString = tempSecondString.Substring(0, secondNumberString.Length - 18);
+                    tempSecondString = tempSecondString.Substring(0, tempSecondString.Length - 18);
                 
             } 
             while (tempFirst != 0 && tempSecond != 0);
